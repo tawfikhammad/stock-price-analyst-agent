@@ -17,6 +17,28 @@ The system consists of 3 AI agents:
 2. **News Research Specialist**: Researches financial news and analyzes market sentiment  
 3. **Investment Advisor**: Synthesizes analysis into professional investment recommendations
 
+## Project Structure
+
+```
+crew/
+├── .env                         # Environment variables
+├── pyproject.toml              # Project configuration
+├── uv.lock                     # Dependency lock file
+├── artifacts/                  # Generated analysis outputs
+├── src/crew/
+│   ├── crew.py                 # Main crew definition
+│   ├── main.py                 # Entry point
+│   ├── config/
+│   │   ├── agents.yaml         # Agent configurations
+│   │   └── tasks.yaml          # Task definitions
+│   └── tools/
+│       ├── custom_tools.py     # Stock analysis tools
+│       ├── helper.py           # Utility functions
+│       └── schemas.py          # Data schemas
+└── tests/                      # Test files
+```
+
+
 ## Installation
 
 1. Clone the repository:
@@ -58,25 +80,4 @@ The system generates several output files in the `artifacts/` directory:
 - `{SYMBOL}_analysis_report.md` - Technical analysis report
 - `report.md` - Executive investment brief
 
-
-## Project Structure
-
-```
-crew/
-├── .env                         # Environment variables
-├── pyproject.toml              # Project configuration
-├── uv.lock                     # Dependency lock file
-├── artifacts/                  # Generated analysis outputs
-├── src/crew/
-│   ├── crew.py                 # Main crew definition
-│   ├── main.py                 # Entry point
-│   ├── config/
-│   │   ├── agents.yaml         # Agent configurations
-│   │   └── tasks.yaml          # Task definitions
-│   └── tools/
-│       ├── custom_tools.py     # Stock analysis tools
-│       ├── helper.py           # Utility functions
-│       └── schemas.py          # Data schemas
-└── tests/                      # Test files
-```
-
+  ![analysis_chart](https://github.com/tawfikhammad/stock-price-analyst-agent/blob/492a7006dc16c3b0c6ec4226de22ea644dade178/crew/artifacts/analysis_chart.png)
