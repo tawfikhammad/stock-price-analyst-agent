@@ -1,17 +1,58 @@
-research_task:
+stock_data_analysis_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
+    Fetch stock price data for {symbol} and perform detailed technical and statistical analysis.
+    Use the Stock Data Fetcher tool to retrieve historical price data for the {period} period.
+    Then use the Stock Price Analyzer tool to conduct thorough analysis including:
+    - Technical indicators (moving averages, RSI, MACD, Bollinger Bands)
+    - Statistical analysis (volatility, returns, risk metrics)
+    - Trend analysis and chart pattern recognition
+    - Generate comprehensive visualizations and save analysis results
+    Ensure all data is properly validated and analysis is statistically sound.
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    A comprehensive technical analysis report containing:
+    - Current price and key statistics
+    - Technical indicators with interpretations
+    - Volatility and risk analysis
+    - Trend direction and momentum analysis
+    - Generated charts and visualizations
+    - Saved analysis data files for further processing
+  agent: stock_data_analyst
 
-reporting_task:
+news_research_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Research and analyze recent financial news and market sentiment for {symbol}.
+    Use the Financial News Searcher tool to gather recent news articles, press releases,
+    and market commentary about the company. Analyze the sentiment of news coverage
+    and identify key themes that could impact stock performance.
+    Focus on news from the past 7-14 days and provide sentiment scoring.
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A detailed news sentiment analysis report including:
+    - Summary of recent news articles and their sources
+    - Potential market-moving events or announcements
+    - Sentiment score and trend analysis
+    - Saved news data for executive report generation
+  agent: news_researcher
+
+investment_report_task:
+  description: >
+    Generate a comprehensive executive investment brief by synthesizing the technical analysis
+    results and news sentiment data. Use the Executive Report Generator tool to create
+    a professional investment recommendation report.
+    Combine insights from stock analysis and news research to provide:
+    - Clear buy/sell/hold recommendation with confidence level
+    - Investment thesis with supporting evidence
+    - Risk assessment and key factors to monitor
+    - Price targets and technical levels
+    - Executive summary suitable for decision-makers
+    Ensure the recommendation is well-justified and includes appropriate disclaimers.
+  expected_output: >
+    A professional executive investment brief formatted as markdown containing:
+    - Executive summary with clear recommendation (BUY/SELL/HOLD)
+    - Key financial metrics and technical analysis summary
+    - Market sentiment and news analysis
+    - Investment thesis with strengths and risks
+    - Performance metrics and price targets
+    - Professional disclaimers and risk warnings
+    - Saved as markdown file for easy sharing
+  agent: investment_report
+  context: [stock_data_analysis_task, news_research_task]
