@@ -1,32 +1,40 @@
-#!/usr/bin/env python
 import sys
 import warnings
-
+import os
 from datetime import datetime
-
-from crew.crew import Crew
+from crew.crew import StockAnalysisCrew
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
-# This main file is intended to be a way for you to run your
-# crew locally, so refrain from adding unnecessary logic into this file.
-# Replace with inputs you want to test with, it will automatically
-# interpolate any tasks and agents information
-
 def run():
     """
-    Run the crew.
+    Run the stock analysis crew.
     """
-    inputs = {
-        'topic': 'AI LLMs',
-        'current_year': str(datetime.now().year)
-    }
+    # Get stock symbol from command line or use "AAPL"
+    symbol = sys.argv[1] if len(sys.argv) > 1 else "AAPL"
     
-    try:
-        Crew().crew().kickoff(inputs=inputs)
-    except Exception as e:
-        raise Exception(f"An error occurred while running the crew: {e}")
+    inputs = {
+        'symbol': symbol.upper(),
+        'period': '5y'  # 5 years of data
+    }
 
+    try:
+        result = StockAnalysisCrew().crew().kickoff(inputs=inputs)
+
+        print("\n" + "=" * 50)
+        print("✅ Stock Analysis Complete!")
+        print(f"Generated files:")
+        print(f"   - {symbol.upper()}_stock_data.csv")
+        print(f"   - {symbol.upper()}_analysis.json") 
+        print(f"   - {symbol.upper()}_analysis_chart.html")
+        print(f"   - {symbol.upper()}_analysis_report.md")
+        print(f"   - report.md")
+        
+        return result
+        
+    except Exception as e:
+        print(f"❌ An error occurred while running the crew: {e}")
+        raise Exception(f"An error occurred while running the crew: {e}")
 
 def train():
     """
@@ -37,7 +45,7 @@ def train():
         'current_year': str(datetime.now().year)
     }
     try:
-        Crew().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
+        StockAnalysisCrew().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
 
     except Exception as e:
         raise Exception(f"An error occurred while training the crew: {e}")
@@ -47,7 +55,7 @@ def replay():
     Replay the crew execution from a specific task.
     """
     try:
-        Crew().crew().replay(task_id=sys.argv[1])
+        StockAnalysisCrew().crew().replay(task_id=sys.argv[1])
 
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
@@ -62,7 +70,7 @@ def test():
     }
     
     try:
-        Crew().crew().test(n_iterations=int(sys.argv[1]), eval_llm=sys.argv[2], inputs=inputs)
+        StockAnalysisCrew().crew().test(n_iterations=int(sys.argv[1]), eval_llm=sys.argv[2], inputs=inputs)
 
     except Exception as e:
         raise Exception(f"An error occurred while testing the crew: {e}")
