@@ -1,4 +1,4 @@
-# Stock Price Visualizer Agent
+# Stock Price Analyst Agent
 
 An AI-powered stock analysis system built with CrewAI that provides comprehensive technical analysis, market sentiment research, and investment recommendations for stocks.
 
