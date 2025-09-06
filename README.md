@@ -21,7 +21,7 @@ The system consists of 3 AI agents:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/tawfikhammad/stock-price-visualizer-agent.git
+git clone https://github.com/tawfikhammad/stock-price-analyst-agent.git
 cd stock-price-visualizer-agent/crew
 ```
 
