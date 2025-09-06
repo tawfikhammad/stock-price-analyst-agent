@@ -26,7 +26,7 @@ def create_stock_charts(df: pd.DataFrame, symbol: str):
         fig.add_trace(go.Scatter(x=df.index, y=df['BB_lower'], name='BB Lower', line=dict(color='gray', dash='dash')), row=1, col=1)
         
         # Volume
-        fig.add_trace(go.Bar(x=df.index, y=df['Volume'], name='Volume', marker_color='lightblue'), row=2, col=1)
+        fig.add_trace(go.Bar(x=df.index, y=df['Volume'], name='Volume', marker_color='red'), row=2, col=1)
         
         # RSI
         fig.add_trace(go.Scatter(x=df.index, y=df['RSI'], name='RSI', line=dict(color='orange')), row=3, col=1)
