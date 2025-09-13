@@ -80,4 +80,4 @@ The system generates several output files in the `artifacts/` directory:
 - `{SYMBOL}_analysis_report.md` - Technical analysis report
 - `report.md` - Executive investment brief
 
-  ![analysis_chart](https://github.com/tawfikhammad/stock-price-analyst-agent/blob/492a7006dc16c3b0c6ec4226de22ea644dade178/crew/artifacts/image.png)
+  ![analysis_chart](https://github.com/tawfikhammad/stock-price-analyst-agent/blob/b903c99c94c7f2f5cec02ebe7b92112e767ea589/crew/artifacts/image.png)
