@@ -10,30 +10,26 @@ def run():
     """
     Run the stock analysis crew.
     """
-    # Get stock symbol from command line or use "AAPL"
-    symbol = sys.argv[1] if len(sys.argv) > 1 else "AAPL"
-    
+    symbol = "AAPL"
     inputs = {
-        'symbol': symbol.upper(),
-        'period': '5y'  # 5 years of data
+        'symbol': symbol,
+        'period': '5y'
     }
 
     try:
         result = StockAnalysisCrew().crew().kickoff(inputs=inputs)
 
-        print("\n" + "=" * 50)
         print("✅ Stock Analysis Complete!")
         print(f"Generated files:")
-        print(f"   - {symbol.upper()}_stock_data.csv")
-        print(f"   - {symbol.upper()}_analysis.json") 
-        print(f"   - {symbol.upper()}_analysis_chart.html")
-        print(f"   - {symbol.upper()}_analysis_report.md")
+        print(f"   - {symbol}_stock_data.csv")
+        print(f"   - {symbol}_analysis.json") 
+        print(f"   - {symbol}_analysis_chart.html")
+        print(f"   - {symbol}_analysis_report.md")
         print(f"   - report.md")
         
         return result
         
     except Exception as e:
-        print(f"❌ An error occurred while running the crew: {e}")
         raise Exception(f"An error occurred while running the crew: {e}")
 
 def train():

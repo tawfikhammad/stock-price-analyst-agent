@@ -4,7 +4,7 @@ from pydantic import BaseModel
 import yfinance as yf
 import pandas as pd
 import numpy as np
-from .helper import create_stock_charts, generate_executive_report
+from .helper import create_stock_charts, generate_report 
 from .schemas import (
     StockDataInput,
     StockAnalysisInput,
@@ -21,14 +21,13 @@ class StockDataFetcher(BaseTool):
     description: str = "".join(
         [
             "Fetches historical stock price data using yfinance. ",
-            "Returns data and saves it to CSV file for further analysis."
+            "Returns data and saves it to CSV file for analysis."
         ]
     )
     args_schema: Type[BaseModel] = StockDataInput
 
     def _run(self, symbol: str, period: str = "1m") -> str:
         try:
-            # Create artifacts directory if it doesn't exist
             os.makedirs("artifacts", exist_ok=True)
             
             # Fetch stock data
@@ -69,7 +68,7 @@ class StockAnalyzer(BaseTool):
     name: str = "Stock Price Analyzer"
     description: str = "".join(
         [
-            "Performs comprehensive statistical analysis on stock data including technical indicators, ",
+            "Performs statistical analysis on stock data including technical indicators, ",
             "volatility analysis, trend analysis, and generates visualizations."
         ]
     )
@@ -161,8 +160,7 @@ class StockAnalyzer(BaseTool):
 class ReportGenerator(BaseTool):
     name: str = "Report Generator"
     description: str = (
-        "Generates a comprehensive report combining stock analysis, news sentiment, "
-        "and investment recommendations in a professional format."
+        "Generates a report combining stock analysis, news sentiment, and investment recommendations in a professional format."
     )
     args_schema: Type[BaseModel] = ReportGeneratorInput
 
@@ -176,8 +174,8 @@ class ReportGenerator(BaseTool):
             with open(analysis_file, 'r') as f:
                 analysis_data = json.load(f)
             
-            # Generate executive summary
-            report = generate_executive_report(analysis_data)
+            # Generate summary
+            report = generate_report(analysis_data)
             
             # Save report
             report_file = f"artifacts/{symbol}_analysis_report.md"

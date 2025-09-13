@@ -52,8 +52,7 @@ def create_stock_charts(df: pd.DataFrame, symbol: str):
         print(f"Chart saved as {chart_file}")
 
 
-def generate_executive_report(analysis_data: dict) -> str:
-    """Generate comprehensive executive report"""
+def generate_report(analysis_data: dict) -> str:
     symbol = analysis_data['symbol']
     
     # Determine investment recommendation
@@ -94,7 +93,6 @@ def generate_executive_report(analysis_data: dict) -> str:
 
 ### Strengths:
 """
-    # Add strengths based on analysis
     strengths = []
     if trend['trend_direction'] == 'Bullish':
         strengths.append("Stock is in a bullish trend above key moving averages")
@@ -108,7 +106,6 @@ def generate_executive_report(analysis_data: dict) -> str:
     
     report += f"\n### Risks:\n"
         
-    # Add risks based on analysis
     risks = []
     if volatility['annualized_volatility'] > 0.4:
         risks.append("High volatility may indicate increased investment risk")
