@@ -2,7 +2,7 @@ import sys
 import warnings
 import os
 from datetime import datetime
-from crew.crew import StockAnalysisCrew
+from crew import StockAnalysisCrew
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
