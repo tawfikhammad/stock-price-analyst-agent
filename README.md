@@ -3,7 +3,7 @@
 An AI-powered stock analysis system built with CrewAI that provides comprehensive technical analysis, market sentiment research, and investment recommendations for stocks.
 
 ## demo
-https://www.youtube.com/watch?v=XuUOfK70Bck
+https://www.youtube.com/watch?v=3bpNk6AuMWM
 ## Features
 
 - **Technical Analysis**: Advanced stock data analysis with technical indicators (RSI, MACD, Bollinger Bands, Moving Averages)
