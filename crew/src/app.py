@@ -25,9 +25,21 @@ st.markdown("""
         padding: 0rem 1rem;
     }
     .stMetric {
-        background-color: #f0f2f6;
-        padding: 10px;
-        border-radius: 5px;
+        background-color: #ffffff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border: 1px solid #e0e0e0;
+    }
+    .stMetric label {
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: #555 !important;
+    }
+    .stMetric [data-testid="stMetricValue"] {
+        font-size: 24px !important;
+        font-weight: 700 !important;
+        color: #1f77b4 !important;
     }
     .stAlert {
         padding: 10px;
@@ -38,6 +50,9 @@ st.markdown("""
     }
     h2 {
         color: #2c3e50;
+    }
+    div[data-testid="column"] {
+        padding: 5px;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -171,44 +186,51 @@ def display_metrics(analysis_data):
     tech_indicators = analysis_data.get('technical_indicators', {})
     
     with col1:
+        current_price = price_stats.get('current_price', 0)
         st.metric(
-            label="Current Price",
-            value=f"${price_stats.get('current_price', 'N/A')}",
-            delta=None
+            label="💰 Current Price",
+            value=f"${current_price:.2f}" if current_price else "N/A"
         )
+        avg_price = price_stats.get('average_price', 0)
         st.metric(
-            label="Average Price",
-            value=f"${price_stats.get('average_price', 'N/A')}"
+            label="📊 Average Price",
+            value=f"${avg_price:.2f}" if avg_price else "N/A"
         )
     
     with col2:
+        high_price = price_stats.get('highest_price', 0)
         st.metric(
-            label="Highest Price",
-            value=f"${price_stats.get('highest_price', 'N/A')}"
+            label="📈 Highest Price",
+            value=f"${high_price:.2f}" if high_price else "N/A"
         )
+        low_price = price_stats.get('lowest_price', 0)
         st.metric(
-            label="Lowest Price",
-            value=f"${price_stats.get('lowest_price', 'N/A')}"
+            label="📉 Lowest Price",
+            value=f"${low_price:.2f}" if low_price else "N/A"
         )
     
     with col3:
+        rsi = tech_indicators.get('rsi', 0)
         st.metric(
-            label="RSI",
-            value=f"{tech_indicators.get('rsi', 'N/A')}"
+            label="🎯 RSI",
+            value=f"{rsi:.2f}" if rsi else "N/A"
         )
+        ma_50 = tech_indicators.get('ma_50', 0)
         st.metric(
-            label="MA 50",
-            value=f"${tech_indicators.get('ma_50', 'N/A')}"
+            label="📍 MA 50",
+            value=f"${ma_50:.2f}" if ma_50 else "N/A"
         )
     
     with col4:
+        macd = tech_indicators.get('macd', 0)
         st.metric(
-            label="MACD",
-            value=f"{tech_indicators.get('macd', 'N/A')}"
+            label="⚡ MACD",
+            value=f"{macd:.4f}" if macd else "N/A"
         )
+        ma_200 = tech_indicators.get('ma_200', 0)
         st.metric(
-            label="MA 200",
-            value=f"${tech_indicators.get('ma_200', 'N/A')}"
+            label="📌 MA 200",
+            value=f"${ma_200:.2f}" if ma_200 else "N/A"
         )
 
 def display_analysis_summary(analysis_data):
@@ -386,13 +408,8 @@ def main():
         **Get started:**
         1. Enter a stock symbol in the sidebar (e.g., AAPL, MSFT, GOOGL)
         2. Select your preferred analysis period
-        3. Click "🔍 Analyze Stock"
-        4. Explore the comprehensive analysis dashboard
-        
-        The analysis is performed by AI agents specialized in:
-        - Stock data analysis
-        - Financial news research
-        - Investment advisory
+
+        Then click "🔍 Analyze Stock" to show the full analysis dashboard.
         """)
         
         # Display sample if AAPL data exists
