@@ -23,7 +23,6 @@ def run():
         print(f"Generated files:")
         print(f"   - {symbol}_stock_data.csv")
         print(f"   - {symbol}_analysis.json") 
-        print(f"   - {symbol}_analysis_chart.html")
         print(f"   - {symbol}_analysis_report.md")
         print(f"   - report.md")
         

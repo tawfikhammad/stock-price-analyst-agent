@@ -4,7 +4,7 @@ from pydantic import BaseModel
 import yfinance as yf
 import pandas as pd
 import numpy as np
-from .helper import create_stock_charts, generate_report 
+from .helper import generate_report 
 from .schemas import (
     StockDataInput,
     StockAnalysisInput,
@@ -144,8 +144,8 @@ class StockAnalyzer(BaseTool):
                 }
             }
             
-            # Create visualizations
-            create_stock_charts(df, symbol)
+            # save updated data with indicators
+            df.to_csv(f"artifacts/{symbol}_stock_data.csv")
 
             # Save analysis results
             analysis_file = f"artifacts/{symbol}_analysis.json"
