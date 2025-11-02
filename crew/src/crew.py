@@ -3,7 +3,7 @@ from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from crewai_tools import SerperDevTool
 from typing import List
-from crew.tools.custom_tools import (
+from tools.custom_tools import (
     StockDataFetcher, 
     StockAnalyzer, 
     ReportGenerator

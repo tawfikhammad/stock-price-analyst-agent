@@ -2,7 +2,7 @@ import sys
 import warnings
 import os
 from datetime import datetime
-from crew.crew import StockAnalysisCrew
+from crew import StockAnalysisCrew
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
@@ -23,7 +23,6 @@ def run():
         print(f"Generated files:")
         print(f"   - {symbol}_stock_data.csv")
         print(f"   - {symbol}_analysis.json") 
-        print(f"   - {symbol}_analysis_chart.html")
         print(f"   - {symbol}_analysis_report.md")
         print(f"   - report.md")
         
